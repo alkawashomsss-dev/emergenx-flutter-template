@@ -1,0 +1,11 @@
+{
+    "name": "EmergenX",
+    "short_name": "EmergenX",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#7C3AED",
+    "theme_color": "#7C3AED",
+    "description": "EmergenX - AI App Builder by Alkawas",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false
+}
