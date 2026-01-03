@@ -1,5 +1,5 @@
-name: emergenx_app
-description: EmergenX - FullStack App Builder AI Counter Demo
+name: expense_tracker
+description: تطبيق لتتبع المصاريف اليومية مع إحصائيات وتصورات شاملة لمساعدة المستخدمين في إدارة مالية شخصية بشكل 
 publish_to: 'none'
 version: 1.0.0+1
 
