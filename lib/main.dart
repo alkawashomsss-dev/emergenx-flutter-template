@@ -10,11 +10,11 @@ class EmergenXApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Food Delivery App',
+      title: 'Medical Appointment Booking',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFFFF5722),
+          seedColor: const Color(0xFF4CAF50),
           brightness: Brightness.light,
         ),
         useMaterial3: true,
@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Color(0xFFFF5722),
+              Color(0xFF4CAF50),
               Color(0xFFFFC107),
             ],
           ),
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'تطبيق توصيل الطعام',
+                          'حجز المواعيد الطبية',
                           style: const TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'تطبيق توصيل طعام يشبه طلبات يتيح للمستخدمين تعقب ط...',
+                          'تطبيق يسهل حجز المواعيد الطبية مع ميزة إرسال إشعار...',
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.white.withOpacity(0.8),
@@ -118,13 +118,13 @@ class _HomePageState extends State<HomePage> {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          color: const Color(0xFFFF5722).withOpacity(0.1),
+                          color: const Color(0xFF4CAF50).withOpacity(0.1),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Icon(
                           Icons.apps,
                           size: 40,
-                          color: const Color(0xFFFF5722),
+                          color: const Color(0xFF4CAF50),
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'تطبيق توصيل طعام يشبه طلبات يتيح للمستخدمين تعقب طلباتهم مباشرة من خلال خريطة وسلة مشتريات.',
+                        'تطبيق يسهل حجز المواعيد الطبية مع ميزة إرسال إشعارات للتذكير.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 14,
@@ -235,7 +235,7 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) => setState(() => _selectedIndex = index),
-        selectedItemColor: const Color(0xFFFF5722),
+        selectedItemColor: const Color(0xFF4CAF50),
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
