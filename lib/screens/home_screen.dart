@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
+import '../widgets/note_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<String> _tasks = [];
+  final List<String> _notes = [];
   final TextEditingController _controller = TextEditingController();
 
-  void _addTask() {
+  void _addNote() {
     if (_controller.text.isNotEmpty) {
       setState(() {
-        _tasks.add(_controller.text);
+        _notes.add(_controller.text);
         _controller.clear();
       });
     }
   }
 
-  void _removeTask(int index) {
+  void _removeNoteAt(int index) {
     setState(() {
-      _tasks.removeAt(index);
+      _notes.removeAt(index);
     });
   }
 
@@ -30,43 +31,37 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('قائمة المهام'),
+        title: const Text('ملاحظات'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
               controller: _controller,
               decoration: const InputDecoration(
-                labelText: 'أضافة مهمة جديدة',
                 border: OutlineInputBorder(),
+                labelText: 'أضف ملاحظة جديدة',
               ),
+              onSubmitted: (_) => _addNote(),
             ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: _addTask,
-              child: const Text('أضف'),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: _notes.length,
+              itemBuilder: (context, index) {
+                return NoteWidget(
+                  note: _notes[index],
+                  onDelete: () => _removeNoteAt(index),
+                );
+              },
             ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: ListView.builder(
-                itemCount: _tasks.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: ListTile(
-                      title: Text(_tasks[index]),
-                      trailing: IconButton(
-                        icon: const Icon(Icons.delete),
-                        onPressed: () => _removeTask(index),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _addNote,
+        child: const Icon(Icons.add),
       ),
     );
   }
