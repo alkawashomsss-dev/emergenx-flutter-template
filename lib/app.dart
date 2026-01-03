@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'حاسبة بسيطة',
+      title: 'تتبع المصاريف',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       home: const HomeScreen(),
