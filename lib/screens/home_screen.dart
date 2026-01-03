@@ -4,26 +4,21 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<String> _tasks = [];
-  final TextEditingController _taskController = TextEditingController();
+  int _selectedIndex = 0;
 
-  void _addTask() {
-    final task = _taskController.text;
-    if (task.isNotEmpty) {
-      setState(() {
-        _tasks.add(task);
-      });
-      _taskController.clear();
-    }
-  }
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text('Home Page', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+    Text('Search Page', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+    Text('Profile Page', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+  ];
 
-  void _removeTask(int index) {
+  void _onItemTapped(int index) {
     setState(() {
-      _tasks.removeAt(index);
+      _selectedIndex = index;
     });
   }
 
@@ -31,39 +26,29 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('قائمة المهام اليومية'),
+        title: const Text('تطبيق بليزر'),
       ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              controller: _taskController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'أضف مهمة جديدة',
-              ),
-            ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
-          ElevatedButton(
-            onPressed: _addTask,
-            child: const Text('إضافة'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: _tasks.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(_tasks[index]),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.delete),
-                    onPressed: () => _removeTask(index),
-                  ),
-                );
-              },
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
           ),
         ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.teal,
+        onTap: _onItemTapped,
       ),
     );
   }
