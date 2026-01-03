@@ -5,7 +5,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       colorScheme: ColorScheme.fromSeed(
-        seedColor: Colors.blue,
+        seedColor: Colors.teal,
         brightness: Brightness.light,
       ),
       appBarTheme: const AppBarTheme(
