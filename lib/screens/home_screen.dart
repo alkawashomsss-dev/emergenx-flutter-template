@@ -1,5 +1,6 @@
+// الكود الكامل هنا 
 import 'package:flutter/material.dart';
-import '../widgets/journal_entry_card.dart';
+import '../widgets/task_list.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,17 +9,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('مذكراتي اليومية'),
+        title: const Text('إدارة المهام'),
       ),
-      body: ListView.builder(
-        itemCount: 10, // Dummy count for entries
-        itemBuilder: (context, index) {
-          return const JournalEntryCard();
-        },
-      ),
+      body: const TaskList(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Handle new entry
+          // Add task button pressed
         },
         child: const Icon(Icons.add),
       ),
