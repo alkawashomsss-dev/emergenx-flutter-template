@@ -10,11 +10,11 @@ class EmergenXApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Social Interaction App',
+      title: 'Simple Calculator',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFFFF5722),
+          seedColor: const Color(0xFF2196F3),
           brightness: Brightness.light,
         ),
         useMaterial3: true,
@@ -44,8 +44,8 @@ class _HomePageState extends State<HomePage> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Color(0xFFFF5722),
-              Color(0xFF009688),
+              Color(0xFF2196F3),
+              Color(0xFFFFC107),
             ],
           ),
         ),
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'تطبيق التفاعل الاجتماعي',
+                          'آلة حاسبة بسيطة',
                           style: const TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'تطبيق تواصل اجتماعي مبتكر يتيح للمستخدمين مشاركة ا...',
+                          'تطبيق حاسبة بسيط لحساب العمليات الرياضية الأساسية....',
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.white.withOpacity(0.8),
@@ -118,13 +118,13 @@ class _HomePageState extends State<HomePage> {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          color: const Color(0xFFFF5722).withOpacity(0.1),
+                          color: const Color(0xFF2196F3).withOpacity(0.1),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Icon(
                           Icons.apps,
                           size: 40,
-                          color: const Color(0xFFFF5722),
+                          color: const Color(0xFF2196F3),
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'تطبيق تواصل اجتماعي مبتكر يتيح للمستخدمين مشاركة الصور واللحظات مع الأصدقاء.',
+                        'تطبيق حاسبة بسيط لحساب العمليات الرياضية الأساسية.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 14,
@@ -178,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFFFC107),
+                            color: const Color(0xFFFF5722),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Icon(
@@ -235,7 +235,7 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) => setState(() => _selectedIndex = index),
-        selectedItemColor: const Color(0xFFFF5722),
+        selectedItemColor: const Color(0xFF2196F3),
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
