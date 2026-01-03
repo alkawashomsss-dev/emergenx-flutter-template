@@ -7,22 +7,27 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('سولي'),
+        title: const Text('الطقس الحالي'),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'مرحباً بك في سولي!',
-              style: TextStyle(fontSize: 24),
+          children: [
+            const Icon(
+              Icons.wb_sunny,
+              size: 100,
+              color: Colors.orange,
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Functionality to be added later
-              },
-              child: const Text('إضافة تذكير جديد'),
+            const Text(
+              '27°C',
+              style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'مشمس',
+              style: TextStyle(fontSize: 24, color: Colors.grey),
             ),
           ],
         ),
