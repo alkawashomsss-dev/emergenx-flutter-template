@@ -10,48 +10,30 @@ class EmergenXApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'EmergenX',
+      title: 'Expense Tracker',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF7C3AED), // Violet
+          seedColor: const Color(0xFF4CAF50),
           brightness: Brightness.light,
         ),
         useMaterial3: true,
         fontFamily: 'Cairo',
       ),
-      home: const CounterPage(),
+      home: const HomePage(),
     );
   }
 }
 
-class CounterPage extends StatefulWidget {
-  const CounterPage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<CounterPage> createState() => _CounterPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _CounterPageState extends State<CounterPage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      if (_counter > 0) _counter--;
-    });
-  }
-
-  void _resetCounter() {
-    setState(() {
-      _counter = 0;
-    });
-  }
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -62,59 +44,69 @@ class _CounterPageState extends State<CounterPage> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Color(0xFF7C3AED),
-              Color(0xFF4F46E5),
+              Color(0xFF4CAF50),
+              Color(0xFF8BC34A),
             ],
           ),
         ),
         child: SafeArea(
-          child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(20),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Logo
-                Container(
-                  width: 80,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Icon(
-                    Icons.bolt,
-                    size: 40,
-                    color: Colors.white,
-                  ),
+                // Header
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'متعقب النفقات',
+                          style: const TextStyle(
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'تطبيق لتتبع المصاريف اليومية مع إحصائيات وتصورات ش...',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.white.withOpacity(0.8),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: const Icon(
+                        Icons.bolt,
+                        color: Colors.white,
+                        size: 28,
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 16),
                 
-                // App Name
-                const Text(
-                  'EmergenX',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                const Text(
-                  'by Alkawas',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.white70,
-                  ),
-                ),
-                const SizedBox(height: 60),
+                const SizedBox(height: 30),
                 
-                // Counter Display
+                // Main Card
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 30),
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30),
+                    color: const Color(0xFFFFFFFF),
+                    borderRadius: BorderRadius.circular(25),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
+                        color: Colors.black.withOpacity(0.15),
                         blurRadius: 20,
                         offset: const Offset(0, 10),
                       ),
@@ -122,71 +114,116 @@ class _CounterPageState extends State<CounterPage> {
                   ),
                   child: Column(
                     children: [
-                      const Text(
-                        'العدّاد',
+                      Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF4CAF50).withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Icon(
+                          Icons.apps,
+                          size: 40,
+                          color: const Color(0xFF4CAF50),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        'الرئيسية',
                         style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.grey,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: const Color(0xFF1F2937),
                         ),
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        '$_counter',
-                        style: const TextStyle(
-                          fontSize: 72,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF7C3AED),
+                        'تطبيق لتتبع المصاريف اليومية مع إحصائيات وتصورات شاملة لمساعدة المستخدمين في إدارة مالية شخصية بشكل أفضل.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: const Color(0xFF1F2937).withOpacity(0.7),
                         ),
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 40),
                 
-                // Control Buttons
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Decrement
-                    _buildButton(
-                      icon: Icons.remove,
-                      onPressed: _decrementCounter,
-                      color: Colors.red.shade400,
-                    ),
-                    const SizedBox(width: 20),
-                    
-                    // Reset
-                    _buildButton(
-                      icon: Icons.refresh,
-                      onPressed: _resetCounter,
-                      color: Colors.grey.shade600,
-                      size: 50,
-                    ),
-                    const SizedBox(width: 20),
-                    
-                    // Increment
-                    _buildButton(
-                      icon: Icons.add,
-                      onPressed: _incrementCounter,
-                      color: Colors.green.shade400,
-                    ),
-                  ],
+                const SizedBox(height: 24),
+                
+                // Features Section
+                const Text(
+                  'المميزات',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
+                const SizedBox(height: 16),
                 
-                const SizedBox(height: 60),
+                // Feature Cards
+                ...List.generate(3, (index) {
+                  final features = ["ميزة 1", "ميزة 2", "ميزة 3"];
+                  final icons = [Icons.star, Icons.flash_on, Icons.favorite];
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: 12),
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.15),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFCDDC39),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Icon(
+                            icons[index % 3],
+                            color: Colors.white,
+                            size: 24,
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Text(
+                            index < features.length ? features[index] : 'ميزة ${index + 1}',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.white.withOpacity(0.5),
+                          size: 16,
+                        ),
+                      ],
+                    ),
+                  );
+                }),
+                
+                const SizedBox(height: 24),
                 
                 // Footer
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Text(
-                    'Built with EmergenX AI Builder',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.white70,
+                Center(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: const Text(
+                      'Built with EmergenX by Alkawas',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.white70,
+                      ),
                     ),
                   ),
                 ),
@@ -195,40 +232,25 @@ class _CounterPageState extends State<CounterPage> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildButton({
-    required IconData icon,
-    required VoidCallback onPressed,
-    required Color color,
-    double size = 64,
-  }) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onPressed,
-        borderRadius: BorderRadius.circular(size / 2),
-        child: Container(
-          width: size,
-          height: size,
-          decoration: BoxDecoration(
-            color: color,
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: color.withOpacity(0.4),
-                blurRadius: 15,
-                offset: const Offset(0, 5),
-              ),
-            ],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: (index) => setState(() => _selectedIndex = index),
+        selectedItemColor: const Color(0xFF4CAF50),
+        unselectedItemColor: Colors.grey,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'الرئيسية',
           ),
-          child: Icon(
-            icon,
-            color: Colors.white,
-            size: size * 0.5,
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore),
+            label: 'استكشاف',
           ),
-        ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'حسابي',
+          ),
+        ],
       ),
     );
   }
