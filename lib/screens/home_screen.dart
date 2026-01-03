@@ -7,49 +7,24 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('آخر الأخبار'),
+        title: const Text('سولي'),
       ),
-      body: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return Card(
-            margin: const EdgeInsets.all(8.0),
-            child: ListTile(
-              title: Text('عنوان الخبر رقم ${index + 1}'),
-              subtitle: const Text('تفاصيل الخبر بشكل مبسط وموجز.'),
-              trailing: const Icon(Icons.arrow_forward),
-              onTap: () {
-                // عند الضغط على الخبر
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailScreen(index: index),
-                  ),
-                );
-              },
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'مرحباً بك في سولي!',
+              style: TextStyle(fontSize: 24),
             ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-class DetailScreen extends StatelessWidget {
-  final int index;
-
-  const DetailScreen({super.key, required this.index});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('خبر رقم ${index + 1}'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Text(
-          'تفاصيل كاملة عن الخبر رقم ${index + 1}. يمكن أن يحتوي على الكثير من النصوص والمعلومات لكي يقرأها المستخدم بشكل مريح.',
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Functionality to be added later
+              },
+              child: const Text('إضافة تذكير جديد'),
+            ),
+          ],
         ),
       ),
     );
