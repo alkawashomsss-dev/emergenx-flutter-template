@@ -1,5 +1,5 @@
-name: social_interaction_app
-description: تطبيق تواصل اجتماعي مبتكر يتيح للمستخدمين مشاركة الصور واللحظات مع الأصدقاء.
+name: simple_calculator
+description: تطبيق حاسبة بسيط لحساب العمليات الرياضية الأساسية.
 publish_to: 'none'
 version: 1.0.0+1
 
