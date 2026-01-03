@@ -8,10 +8,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'حاسبة بسيطة',
+      title: 'مذكراتي اليومية',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const HomeScreen(),
+      home: Directionality(
+        textDirection: TextDirection.rtl,
+        child: const HomeScreen(),
+      ),
     );
   }
 }
