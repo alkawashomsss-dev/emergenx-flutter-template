@@ -10,11 +10,11 @@ class EmergenXApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Expense Tracker',
+      title: 'Food Delivery App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF4CAF50),
+          seedColor: const Color(0xFFFF5722),
           brightness: Brightness.light,
         ),
         useMaterial3: true,
@@ -44,8 +44,8 @@ class _HomePageState extends State<HomePage> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Color(0xFF4CAF50),
-              Color(0xFF8BC34A),
+              Color(0xFFFF5722),
+              Color(0xFFFFC107),
             ],
           ),
         ),
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'متعقب النفقات',
+                          'تطبيق توصيل الطعام',
                           style: const TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'تطبيق لتتبع المصاريف اليومية مع إحصائيات وتصورات ش...',
+                          'تطبيق توصيل طعام يشبه طلبات يتيح للمستخدمين تعقب ط...',
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.white.withOpacity(0.8),
@@ -118,13 +118,13 @@ class _HomePageState extends State<HomePage> {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF4CAF50).withOpacity(0.1),
+                          color: const Color(0xFFFF5722).withOpacity(0.1),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Icon(
                           Icons.apps,
                           size: 40,
-                          color: const Color(0xFF4CAF50),
+                          color: const Color(0xFFFF5722),
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'تطبيق لتتبع المصاريف اليومية مع إحصائيات وتصورات شاملة لمساعدة المستخدمين في إدارة مالية شخصية بشكل أفضل.',
+                        'تطبيق توصيل طعام يشبه طلبات يتيح للمستخدمين تعقب طلباتهم مباشرة من خلال خريطة وسلة مشتريات.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 14,
@@ -178,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFCDDC39),
+                            color: const Color(0xFF03A9F4),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Icon(
@@ -235,7 +235,7 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) => setState(() => _selectedIndex = index),
-        selectedItemColor: const Color(0xFF4CAF50),
+        selectedItemColor: const Color(0xFFFF5722),
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
