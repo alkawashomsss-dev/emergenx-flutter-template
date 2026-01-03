@@ -1,5 +1,5 @@
-name: medical_appointment_booking
-description: تطبيق يسهل حجز المواعيد الطبية مع ميزة إرسال إشعارات للتذكير.
+name: social_interaction_app
+description: تطبيق تواصل اجتماعي مبتكر يتيح للمستخدمين مشاركة الصور واللحظات مع الأصدقاء.
 publish_to: 'none'
 version: 1.0.0+1
 
