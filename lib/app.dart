@@ -8,9 +8,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'قائمة المهام',
+      title: 'تطبيق ملاحظات',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
+      home: const HomeScreen(),
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -18,7 +19,6 @@ class MyApp extends StatelessWidget {
       supportedLocales: [
         const Locale('ar', ''),
       ],
-      home: const HomeScreen(),
     );
   }
 }
