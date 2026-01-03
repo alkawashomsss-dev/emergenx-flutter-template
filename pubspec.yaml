@@ -1,5 +1,5 @@
 name: emergenx_app
-description: مذكراتي اليومية - Built with EmergenX AI
+description: إدارة المهام - Built with EmergenX AI
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -10,8 +10,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
-  provider: ^6.1.1
-  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
