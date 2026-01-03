@@ -1,95 +1,78 @@
 import 'package:flutter/material.dart';
-import '../models/task_model.dart';
+import '../models/item_model.dart';
 
 class AddEditScreen extends StatefulWidget {
-  final Task? task;
-  const AddEditScreen({super.key, this.task});
+  final Item? item;
+  final Function(Item) onSave;
+
+  const AddEditScreen({super.key, this.item, required this.onSave});
 
   @override
   State<AddEditScreen> createState() => _AddEditScreenState();
 }
 
 class _AddEditScreenState extends State<AddEditScreen> {
-  final TextEditingController _titleController = TextEditingController();
-  DateTime _selectedDate = DateTime.now();
+  final _formKey = GlobalKey<FormState>();
+  late TextEditingController _titleController;
+  late TextEditingController _descriptionController;
 
   @override
   void initState() {
     super.initState();
-    if (widget.task != null) {
-      _titleController.text = widget.task!.title;
-      _selectedDate = widget.task!.dueDate;
-    }
+    _titleController = TextEditingController(text: widget.item?.title ?? '');
+    _descriptionController = TextEditingController(text: widget.item?.description ?? '');
   }
 
-  void _selectDate() async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: _selectedDate,
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
-    );
-    if (picked != null && picked != _selectedDate) {
-      setState(() {
-        _selectedDate = picked;
-      });
-    }
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _descriptionController.dispose();
+    super.dispose();
   }
 
-  void _saveTask() {
-    if (_titleController.text.isNotEmpty) {
-      final task = Task(title: _titleController.text, dueDate: _selectedDate);
-      Navigator.pop(context, {'action': 'edit', 'task': task});
+  void _saveItem() {
+    if (_formKey.currentState!.validate()) {
+      widget.onSave(Item(
+        title: _titleController.text,
+        description: _descriptionController.text,
+      ));
+      Navigator.pop(context);
     }
-  }
-
-  void _deleteTask() {
-    Navigator.pop(context, {'action': 'delete'});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.task == null ? 'إضافة مهمة' : 'تعديل المهمة'),
-        centerTitle: true,
+        title: Text(widget.item == null ? 'إضافة عنصر' : 'تعديل عنصر'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextField(
-              controller: _titleController,
-              decoration: const InputDecoration(labelText: 'عنوان المهمة'),
-            ),
-            const SizedBox(height: 16),
-            Row(
-              children: [
-                const Text('تاريخ الاستحقاق: '),
-                TextButton(
-                  onPressed: _selectDate,
-                  child: Text(_selectedDate.toLocal().toString().split(' ')[0]),
-                ),
-              ],
-            ),
-            const Spacer(),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: _saveTask,
-                child: const Text('حفظ المهمة'),
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                controller: _titleController,
+                decoration: const InputDecoration(labelText: 'العنوان'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'الرجاء إدخال عنوان';
+                  }
+                  return null;
+                },
               ),
-            ),
-            if (widget.task != null)
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: _deleteTask,
-                  child: const Text('حذف المهمة'),
-                ),
+              TextFormField(
+                controller: _descriptionController,
+                decoration: const InputDecoration(labelText: 'الوصف'),
               ),
-          ],
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _saveItem,
+                child: const Text('حفظ'),
+              ),
+            ],
+          ),
         ),
       ),
     );
