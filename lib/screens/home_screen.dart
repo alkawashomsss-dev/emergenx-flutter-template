@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/note_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,21 +8,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<String> _notes = [];
-  final TextEditingController _controller = TextEditingController();
+  int _counter = 0;
 
-  void _addNote() {
-    if (_controller.text.isNotEmpty) {
-      setState(() {
-        _notes.add(_controller.text);
-        _controller.clear();
-      });
-    }
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
   }
 
-  void _removeNoteAt(int index) {
+  void _decrementCounter() {
     setState(() {
-      _notes.removeAt(index);
+      _counter--;
     });
   }
 
@@ -31,38 +26,35 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ملاحظات'),
+        title: const Text('عداد بسيط'),
       ),
-      body: Column(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[            
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.displayMedium,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: _controller,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'أضف ملاحظة جديدة',
-              ),
-              onSubmitted: (_) => _addNote(),
-            ),
+          FloatingActionButton(
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: _notes.length,
-              itemBuilder: (context, index) {
-                return NoteWidget(
-                  note: _notes[index],
-                  onDelete: () => _removeNoteAt(index),
-                );
-              },
-            ),
+          const SizedBox(width: 8),
+          FloatingActionButton(
+            onPressed: _decrementCounter,
+            tooltip: 'Decrement',
+            child: const Icon(Icons.remove),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _addNote,
-        child: const Icon(Icons.add),
-      ),
+      ), 
     );
   }
 }
