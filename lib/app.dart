@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'تطبيق ملاحظات بسيط',
+      title: 'قائمة المهام',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       home: const HomeScreen(),
