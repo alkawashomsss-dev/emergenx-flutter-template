@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static ThemeData get lightTheme {
-    return ThemeData(
-      colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
-      useMaterial3: true,
-      textTheme: const TextTheme(
-        bodyLarge: TextStyle(fontSize: 18.0),
-        bodyMedium: TextStyle(fontSize: 16.0),
-      ),
-    );
-  }
+  static final ThemeData lightTheme = ThemeData(
+    useMaterial3: true,
+    colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.teal,
+      foregroundColor: Colors.white,
+    ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: Colors.teal,
+      foregroundColor: Colors.white,
+    ),
+  );
 }
