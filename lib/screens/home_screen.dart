@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'add_edit_screen.dart';
-import '../models/item_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,37 +8,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Item> items = [];
+  final List<String> items = [];
+  final TextEditingController _controller = TextEditingController();
 
   void _addItem() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => AddEditScreen(
-          onSave: (item) {
-            setState(() {
-              items.add(item);
-            });
-          },
-        ),
-      ),
-    );
-  }
-
-  void _editItem(int index) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => AddEditScreen(
-          item: items[index],
-          onSave: (item) {
-            setState(() {
-              items[index] = item;
-            });
-          },
-        ),
-      ),
-    );
+    if (_controller.text.isNotEmpty) {
+      setState(() {
+        items.add(_controller.text);
+        _controller.clear();
+      });
+    }
   }
 
   void _deleteItem(int index) {
@@ -49,44 +26,58 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void _showAddDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('إضافة عنصر'),
+        content: TextField(
+          controller: _controller,
+          decoration: const InputDecoration(hintText: 'أدخل اسم العنصر'),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('إلغاء'),
+          ),
+          TextButton(
+            onPressed: () {
+              _addItem();
+              Navigator.pop(context);
+            },
+            child: const Text('إضافة'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('قائمة المشتريات'),
+        title: const Text('قائمة التسوق'),
         centerTitle: true,
       ),
       body: items.isEmpty
-          ? const Center(child: Text('لا توجد عناصر'))
+          ? const Center(child: Text('لا توجد عناصر في القائمة'))
           : ListView.builder(
               itemCount: items.length,
               itemBuilder: (context, index) {
                 return Card(
                   margin: const EdgeInsets.all(8),
                   child: ListTile(
-                    title: Text(items[index].title),
-                    subtitle: items[index].description != null
-                        ? Text(items[index].description!)
-                        : null,
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.edit),
-                          onPressed: () => _editItem(index),
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.delete),
-                          onPressed: () => _deleteItem(index),
-                        ),
-                      ],
+                    title: Text(items[index]),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete, color: Colors.red),
+                      onPressed: () => _deleteItem(index),
                     ),
                   ),
                 );
               },
             ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _addItem,
+        onPressed: _showAddDialog,
         child: const Icon(Icons.add),
       ),
     );
