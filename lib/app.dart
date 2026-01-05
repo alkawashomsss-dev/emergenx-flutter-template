@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'screens/menu_screen.dart';
 
-class MyGame extends StatelessWidget {
-  const MyGame({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'لعبة التطابق',
+      title: 'لعبة 2048',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
       ),
       home: const MenuScreen(),
     );
