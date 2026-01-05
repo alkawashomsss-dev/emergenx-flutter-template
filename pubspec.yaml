@@ -1,5 +1,5 @@
-name: emergenx_app
-description: لعبة التطابق - Built with EmergenX AI
+name: 2048
+description: لعبة 2048 - Built with EmergenX AI
 publish_to: 'none'
 version: 1.0.0+1
 
