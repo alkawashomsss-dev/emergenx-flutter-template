@@ -12,7 +12,7 @@ class MenuScreen extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.purple.shade300, Colors.purple.shade700],
+            colors: [Colors.teal.shade300, Colors.teal.shade700],
           ),
         ),
         child: Center(
@@ -20,7 +20,7 @@ class MenuScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                '🎮 لعبة 2048',
+                '🎮 لعبة 2048 بسيطة',
                 style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
               ),
               const SizedBox(height: 50),
