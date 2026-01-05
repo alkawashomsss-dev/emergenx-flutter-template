@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'theme/app_theme.dart';
-import 'screens/home_screen.dart';
+import 'screens/menu_screen.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyGame extends StatelessWidget {
+  const MyGame({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'تطبيق قائمة التسوق',
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      home: const HomeScreen(),
+      title: 'لعبة التطابق',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MenuScreen(),
     );
   }
 }
