@@ -1,5 +1,5 @@
-name: 2048
-description: لعبة 2048 - Built with EmergenX AI
+name: game_2048
+description: لعبة 2048 بسيطة - Built with EmergenX AI
 publish_to: 'none'
 version: 1.0.0+1
 
