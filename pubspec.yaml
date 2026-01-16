@@ -1,5 +1,5 @@
-name: game_2048
-description: لعبة 2048 بسيطة - Built with EmergenX AI
+name: emergenx_app
+description: لعبة النقاط - Built with EmergenX AI
 publish_to: 'none'
 version: 1.0.0+1
 
